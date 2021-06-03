@@ -4,9 +4,10 @@ import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
-/*
-* 分页数据封装类
-* */
+/**
+ * 分页数据封装类
+ * Created by macro on 2019/4/19.
+ */
 public class CommonPage<T> {
     private Integer pageNum;
     private Integer pageSize;
@@ -14,12 +15,15 @@ public class CommonPage<T> {
     private Long total;
     private List<T> list;
 
-    public static<T> CommonPage<T> restPage(List<T> list){
-        CommonPage<T> result = new CommonPage<>();
-        PageInfo<T> pageInfo = new PageInfo<>(list);
+    /**
+     * 将PageHelper分页后的list转为分页信息
+     */
+    public static <T> CommonPage<T> restPage(List<T> list) {
+        CommonPage<T> result = new CommonPage<T>();
+        PageInfo<T> pageInfo = new PageInfo<T>(list);
+        result.setTotalPage(pageInfo.getPages());
         result.setPageNum(pageInfo.getPageNum());
         result.setPageSize(pageInfo.getPageSize());
-        result.setTotalPage(pageInfo.getPages());
         result.setTotal(pageInfo.getTotal());
         result.setList(pageInfo.getList());
         return result;
@@ -49,19 +53,19 @@ public class CommonPage<T> {
         this.totalPage = totalPage;
     }
 
-    public Long getTotal() {
-        return total;
-    }
-
-    public void setTotal(Long total) {
-        this.total = total;
-    }
-
     public List<T> getList() {
         return list;
     }
 
     public void setList(List<T> list) {
         this.list = list;
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
     }
 }

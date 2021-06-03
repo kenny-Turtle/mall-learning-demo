@@ -1,16 +1,18 @@
 package com.macro.mall.tiny.mbg;
 
+import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.internal.DefaultShellCallback;
-import org.mybatis.generator.api.MyBatisGenerator;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-* 用于生产MBG的代码
-* */
+/**
+ * 用于生产MBG的代码
+ * Created by macro on 2018/4/26.
+ */
 public class Generator {
     public static void main(String[] args) throws Exception {
         //MBG 执行过程中的警告信息

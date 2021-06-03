@@ -8,16 +8,15 @@ import com.macro.mall.tiny.service.PmsBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author apple
- * @date 2021/4/22 9:18 上午
+ * PmsBrandService实现类
+ * Created by macro on 2019/4/19.
  */
 @Service
 public class PmsBrandServiceImpl implements PmsBrandService {
-    @Resource
+    @Autowired
     private PmsBrandMapper brandMapper;
 
     @Override
@@ -31,7 +30,7 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     }
 
     @Override
-    public int updateBrand(Long id,PmsBrand brand) {
+    public int updateBrand(Long id, PmsBrand brand) {
         brand.setId(id);
         return brandMapper.updateByPrimaryKeySelective(brand);
     }
@@ -43,7 +42,7 @@ public class PmsBrandServiceImpl implements PmsBrandService {
 
     @Override
     public List<PmsBrand> listBrand(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         return brandMapper.selectByExample(new PmsBrandExample());
     }
 

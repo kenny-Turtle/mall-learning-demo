@@ -5,22 +5,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author apple
- * @date 2021/4/25 3:34 下午
+ * redis操作Service的实现类
+ * Created by macro on 2018/8/7.
  */
 @Service
 public class RedisServiceImpl implements RedisService {
-
-    @Resource
+    @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     @Override
     public void set(String key, String value) {
-        stringRedisTemplate.opsForValue().set(key,value);
+        stringRedisTemplate.opsForValue().set(key, value);
     }
 
     @Override
@@ -29,8 +27,8 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public boolean explire(String key, long expire) {
-        return stringRedisTemplate.expire(key,expire, TimeUnit.SECONDS);
+    public boolean expire(String key, long expire) {
+        return stringRedisTemplate.expire(key, expire, TimeUnit.SECONDS);
     }
 
     @Override
