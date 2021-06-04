@@ -69,7 +69,7 @@ public class JwtTokenUtil {
     /*
     * 根据用户信息生成token
     * */
-    private String generateToken(UserDetails userDetails){
+    public String generateToken(UserDetails userDetails){
         Map<String,Object> claims = new HashMap<>();
         claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
         claims.put(CLAIM_KEY_CREATED,new Date());
@@ -79,7 +79,7 @@ public class JwtTokenUtil {
     /*
     * 刷新token
     * */
-    private String refreshToken(String token){
+    public String refreshToken(String token){
         Claims claims = getClaimsFromToken(token);
         claims.put(CLAIM_KEY_CREATED,new Date());
         return generateToken(claims);
@@ -88,14 +88,14 @@ public class JwtTokenUtil {
     /*
     * 判断token是否可以被刷新
     * */
-    private boolean canRefresh(String token){
+    public boolean canRefresh(String token){
         return !isTokenExpired(token);
     }
 
     /*
     * 从token中获取登陆用户名
     * */
-    private String getUserNameFromToken(String token){
+    public String getUserNameFromToken(String token){
         String username;
         try{
             Claims claims = getClaimsFromToken(token);
@@ -116,7 +116,7 @@ public class JwtTokenUtil {
     /*
     * 验证token是否还有效
     * */
-    private boolean validateToken(String token, UserDetails userDetails){
+    public boolean validateToken(String token, UserDetails userDetails){
         String username = getUserNameFromToken(token);
         return username.equals(userDetails.getUsername())&&!isTokenExpired(token);
     }
