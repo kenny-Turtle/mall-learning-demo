@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.macro.mall</groupId>
-    <artifactId>mall-tiny-03</artifactId>
+    <artifactId>mall-tiny-04</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mall-tiny-03</name>
+    <name>mall-tiny-04</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

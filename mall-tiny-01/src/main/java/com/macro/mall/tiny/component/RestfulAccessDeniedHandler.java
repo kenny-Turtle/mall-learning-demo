@@ -13,18 +13,17 @@ import java.io.IOException;
 
 /**
  * 当访问接口没有权限时，自定义的返回结果
- * @Author zfj
- * @create 2021/6/4 14:26
+ * Created by macro on 2018/4/26.
  */
 @Component
-public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
+public class RestfulAccessDeniedHandler implements AccessDeniedHandler{
     @Override
-    public void handle(HttpServletRequest httpServletRequest,
-                       HttpServletResponse httpServletResponse,
+    public void handle(HttpServletRequest request,
+                       HttpServletResponse response,
                        AccessDeniedException e) throws IOException, ServletException {
-        httpServletResponse.setCharacterEncoding("UTF-8");
-        httpServletResponse.setContentType("application/json");
-        httpServletResponse.getWriter().println(JSONUtil.parse(CommonResult.forbidden(e.getMessage())));
-        httpServletResponse.getWriter().flush();
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        response.getWriter().println(JSONUtil.parse(CommonResult.forbidden(e.getMessage())));
+        response.getWriter().flush();
     }
 }

@@ -23,6 +23,7 @@ mybatis:
   mapper-locations:
     - classpath:mapper/*.xml
     - classpath*:com/**/mapper/*.xml
+
 # 自定义redis key
 redis:
   key:
@@ -33,7 +34,7 @@ redis:
 
 # 自定义jwt key
 jwt:
-  tokenHeader: Authorization  #jwt存储的请求头
-  secret: mySecret   # jwt 加解密使用的密钥
-  expiration: 604800  #jwt的超期限时间（60*60*24）
-  tokenHead: Bearer  #JWt 负载中拿到开头
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer  #JWT负载中拿到开头

@@ -6,22 +6,17 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.PrintWriter;
-import java.security.PrivateKey;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * springsecurity 需要的用户详情
- * @Author zfj
- * @create 2021/6/4 14:34
+ * SpringSecurity需要的用户详情
+ * Created by macro on 2018/4/26.
  */
 public class AdminUserDetails implements UserDetails {
-
     private UmsAdmin umsAdmin;
     private List<UmsPermission> permissionList;
-
     public AdminUserDetails(UmsAdmin umsAdmin, List<UmsPermission> permissionList) {
         this.umsAdmin = umsAdmin;
         this.permissionList = permissionList;
@@ -31,38 +26,38 @@ public class AdminUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         //返回当前用户的权限
         return permissionList.stream()
-                .filter(permission -> permission.getValue() != null)
-                .map(permission -> new SimpleGrantedAuthority(permission.getValue()))
+                .filter(permission -> permission.getValue()!=null)
+                .map(permission ->new SimpleGrantedAuthority(permission.getValue()))
                 .collect(Collectors.toList());
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return umsAdmin.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return umsAdmin.getUsername();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return umsAdmin.getStatus().equals(1);
     }
 }
