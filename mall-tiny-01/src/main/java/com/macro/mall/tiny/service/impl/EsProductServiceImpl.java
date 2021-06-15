@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
@@ -22,6 +23,7 @@ import java.util.List;
  * @Author zfj
  * @create 2021/6/11 16:03
  */
+@Service
 public class EsProductServiceImpl implements EsProductService {
     private static final Logger LOGGER = LoggerFactory.getLogger(EsProductServiceImpl.class);
     @Resource
